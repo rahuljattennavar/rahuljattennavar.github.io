@@ -1,21 +1,411 @@
 
-<!DOCTYPE html><html lang='en' class=''>
-<head><script src='https://static.codepen.io/assets/editor/live/console_runner-1df7d3399bdc1f40995a35209755dcfd8c7547da127f6469fd81e5fba982f6af.js'></script><script src='https://static.codepen.io/assets/editor/live/css_reload-5619dc0905a68b2e6298901de54f73cefe4e079f65a75406858d92924b4938bf.js'></script><meta charset='UTF-8'><meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" /><link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" /><link rel="canonical" href="https://codepen.io/pen/" />
-<style class="cp-pen-styles">.title{
-  text-align:center;
-  color:red;
-}</style></head><body>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+<title>CodePen - Resume - General</title>
+<style>
+    body, .header h2 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', serif;
+}
+
+body {
+  height: 245mm;
+  width: 180mm;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  color: #333;
+  font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+a {
+  color: #5BC0BE;
+  text-decoration: none;
+  transition: 0.15s ease-in-out;
+}
+a:hover {
+  color: #40a8a6;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  border-bottom: 3px solid #333;
+}
+.header .header__name {
+  flex: 0 0 auto;
+  padding-bottom: 1em;
+}
+.header .header__name h1 {
+  color: #5BC0BE;
+}
+.header h1, .header h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.header h2 {
+  font-weight: 300;
+}
+.header .header__contact {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.header .header__contact .header__contact-field {
+  flex: 0 0 auto;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+.header .header__contact .header__contact-label {
+  display: inline;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.header .header__contact .header__contact-field {
+  display: block;
+}
+
+.resume-body {
+  display: flex;
+  justify-content: space-between;
+}
+.resume-body .resume-body__left {
+  flex: 0 0 auto;
+  width: 70%;
+}
+.resume-body .resume-body__right {
+  flex: 0 0 auto;
+  width: 25%;
+}
+.resume-body .resume-body__right h2 {
+  font-weight: bold;
+}
+
+.experience-list {
+  padding-bottom: .5em;
+  border-bottom: 2px solid #333;
+}
+.experience-list:last-of-type {
+  border-bottom: 0;
+}
+.experience-list h2 {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+.experience-list .experience {
+  border-bottom: 1px solid #EBEBEB;
+  padding-bottom: 1em;
+}
+.experience-list .experience:last-of-type {
+  border-bottom: 0;
+}
+.experience-list .experience__title {
+  display: flex;
+  align-items: stretch;
+  line-height: 1em;
+}
+.experience-list .experience__title h3 {
+  flex: 0 0 auto;
+  display: block;
+  vertical-align: bottom;
+  height: 16px;
+  margin-bottom: 0;
+  margin-right: 1em;
+}
+.experience-list .experience__title h5 {
+  flex: 0 0 auto;
+  display: block;
+  vertical-align: bottom;
+  height: 16px;
+  margin-bottom: 0;
+  line-height: 1em;
+  font-style: italic;
+}
+.experience-list .experience__title h5 span {
+  font-weight: 600;
+  font-style: inherit;
+}
+.experience-list .experience__date {
+  display: block;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.experience-list .experience__info {
+  margin: 0;
+}
+
+.skill-breakdown__field {
+  display: flex;
+  justify-content: flex-sart;
+}
+.skill-breakdown__field .skill-breakdown__label {
+  flex: 0 0 auto;
+  display: block;
+  width: 40px;
+}
+.skill-breakdown__field .skill-breakdown__value {
+  flex: 0 1 auto;
+  display: block;
+  width: 100%;
+  color: red;
+  height: 1em;
+}
+.skill-breakdown__field .skill-breakdown__value .value {
+  background-color: #5BC0BE;
+  width: 100%;
+  height: 100%;
+}
+.skill-breakdown__field .skill-breakdown__value .value.val-100 {
+  width: 100%;
+}
+.skill-breakdown__field .skill-breakdown__value .value.val-91 {
+  width: 91%;
+}
+.skill-breakdown__field .skill-breakdown__value .value.val-75 {
+  width: 75%;
+}
+.skill-breakdown__field .skill-breakdown__value .value.val-60 {
+  width: 60%;
+}
+.skill-breakdown__field .skill-breakdown__value .value.val-50 {
+  width: 50%;
+}
+
+.social {
+  margin-bottom: 1.5em;
+}
+.social .fa {
+  width: 25px;
+}
+
+.resume-note {
+  font-size: .9em;
+  color: #999999;
+}
+
+.resume-print {
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background-color: #5BC0BE;
+  border-radius: 50%;
+  height: 2em;
+  width: 2em;
+  font-size: 1.5em;
+  cursor: hand;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+.resume-print:hover {
+  color: white;
+}
+.resume-print:active, .resume-print:focus {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+.resume-print .fa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media print {
+  .page-wrap .top-boxes,
+  .page-wrap .resizer {
+    display: none;
+  }
+
+  .skill-breakdown__value {
+    -webkit-print-color-adjust: exact;
+  }
+
+  .resume-print {
+    display: none;
+  }
+}
+
+  </style>
+<script>
+  window.console = window.console || function(t) {};
+</script>
+<script>
+  if (document.location.search.match(/type=embed/gi)) {
+    window.parent.postMessage("resize", "*");
+  }
+</script>
 </head>
-<body>
-<h1 class="title">Welcome to my CV</h1>
-<p>Hi I'm RAhul</p>
+<body translate="no">
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,600|Open+Sans+Condensed:300,700" rel="stylesheet">
+<script src="https://use.fontawesome.com/334b91c43a.js"></script>
+<div class="header">
+<div class="header__name">
+<h1>Rahul <span>Jattennavar</span></h1>
+<h2>{{ Front-End Web Developer }}</h2>
+</div> 
+<div class="header__contact">
+<div class="header__contact-field">
+<span class="header__contact-label">Email: </span>
+<a href="mailto:austinjwinnett@gmail.com" class="header__contact-value">austinjwinnett@gmail.com</a>
+</div>
+<div class="header__contact-field">
+<span class="header__contact-label">Phone: </span>
+<a href="tel:+19133148202" class="header__contact-value">913.314.8202</a>
+</div> 
+</div> 
+</div> 
+<div class="resume-body">
+<div class="resume-body__left">
+<div class="experience-list">
+<h2>Education</h2>
+<div class="experience">
+<div class="experience__title">
+<h3>Kansas State University</h3>
+<h5>Manhattan, KS</h5>
+</div> 
+<span class="experience__date">Graduated May 2014</span>
+<ul class="experience__info">
+<li>Bachelor of Science in Family Studies and Human Services.</li>
+<li>GPA: 3.83</li>
+</ul> 
+</div> 
+</div> 
+<div class="experience-list">
+<h2>Work Experience</h2>
+<div class="experience">
+<div class="experience__title">
+<h3>Front-End Web Developer</h3>
+<h5><span>Lifted Logic</span> &ndash; Overland Park, KS</h5>
+</div> 
+<span class="experience__date">August 2016 - Present</span>
+<ul class="experience__info">
+<li>Build full web experiences based on clients' needs.</li>
+<li>Collaborate with other developers and designers, often handling others' work.</li>
+<li>Remain up-to-date on latest web practices and learn new skills.</li>
+<li>Write clean, reusable, well-commented code.</li>
+<li>Train new hires on various aspects of company's development process.</li>
+<li>Test sites for quality assurance and cross-browser performance.</li>
+<li>Troubleshoot bugs on live sites.</li>
+<li>Manage multiple projects at once.</li>
+</ul> 
+</div> 
+<div class="experience">
+<div class="experience__title">
+<h3>Web Developer / Designer</h3>
+<h5><span>Self-Employed</span> &ndash; Kansas City, MO</h5>
+</div> 
+<span class="experience__date">August 2015 - August 2016</span>
+<ul class="experience__info">
+<li>Translated vague ideas from the client into visible results.</li>
+<li>Trained clients on basic website maintenance and hosting possibilities.</li>
+<li>Provided support as needed for multiple clients.</li>
+</ul> 
+</div> 
+<div class="experience">
+<div class="experience__title">
+<h3>Helpdesk Technician</h3>
+<h5><span>Midwestern Baptist Theological Center</span> &ndash; Kansas City, MO</h5>
+</div> 
+<span class="experience__date">July 2014 - August 2016</span>
+<ul class="experience__info">
+<li>Resolved issues regarding Blackboard, Student Portal, and other online websites.</li>
+<li>Updated and edited main university website via WordPress.</li>
+<li>Assisted students, faculty, and staff via phone calls with various problems they may encounter with technology.</li>
+<li>Created and updated SharePoint sites, forms, and workflows for faculty, staff, and students.</li>
+<li>Automated processes with PowerShell.</li>
+<li>Learned new programming languages and skills to boost efficiency.</li>
+</ul> 
+</div> 
+</div> 
+</div> 
+<div class="resume-body__right">
+<div class="skill-breakdown">
+<h2>Languages</h2>
+<div class="skill-breakdown__field">
+<span class="skill-breakdown__label">HTML</span>
+<div class="skill-breakdown__value" data-val="95">
+<div class="value val-95"></div>
+</div>
+</div> 
+<div class="skill-breakdown__field">
+<span class="skill-breakdown__label">CSS</span>
+<div class="skill-breakdown__value" data-val="91">
+<div class="value val-91"></div>
+</div>
+</div> 
+<div class="skill-breakdown__field">
+<span class="skill-breakdown__label">JS</span>
+<div class="skill-breakdown__value" data-val="60">
+<div class="value val-60"></div>
+</div>
+</div> 
+<div class="skill-breakdown__field">
+<span class="skill-breakdown__label">PHP</span>
+<div class="skill-breakdown__value" data-val="75">
+<div class="value val-75"></div>
+</div>
+</div> 
+<div class="skill-breakdown__field">
+<span class="skill-breakdown__label">MySQL</span>
+<div class="skill-breakdown__value" data-val="50">
+<div class="value val-50"></div>
+</div>
+</div> 
+</div>
+<div class="skills">
+<h2>Skills</h2>
+<p>jQuery, AJAX, Bower, NPM, Grunt/Gulp, Git, Bootstrap, WordPress, SharePoint</p>
+</div> 
+<div class="social">
+<h2>Social</h2>
+<div class="social__group">
+<i class="fa fa-linkedin"></i>
+<a href="https://www.linkedin.com/in/awinnett1">awinnett1</a>
+</div> 
+<div class="social__group">
+<i class="fa fa-github"></i>
+<a href="https://github.com/AustinWinnett/">Austin Winnett</a>
+</div> 
+<div class="social__group">
+<i class="fa fa-codepen"></i>
+<a href="https://codepen.io/awinnett/">awinnett</a>
+</div> 
+</div> 
+<div class="resume-note">
+<span>
+// This resume was built <br />
+// with HTML and CSS(SASS).</span>
+</div>
+</div> 
+</div> 
+<div class="resume-print"><i class="fa fa-print"></i></div>
+<script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script id="rendered-js">
+      $('.resume-print').click(function () {
+  window.print();
+});
+      //# sourceURL=pen.js
+    </script>
 </body>
 </html>
-</body></html>
+
